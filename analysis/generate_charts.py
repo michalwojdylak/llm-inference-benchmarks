@@ -124,7 +124,7 @@ MOE = {
 
 
 # ===================================================================
-# CHART 1 — Concurrency Scaling: Output Token Throughput
+# CHART 1 - Concurrency Scaling: Output Token Throughput
 # ===================================================================
 def chart_concurrency_throughput():
     fig, ax = plt.subplots(figsize=(10, 5.5))
@@ -141,7 +141,7 @@ def chart_concurrency_throughput():
 
     ax.set_xticks(x)
     ax.set_xticklabels([f"c{c}" for c in CONCURRENCY_SCALING["concurrency"]], fontsize=13)
-    style_ax(ax, "Output Tokens / sec", "Concurrency Scaling — Output Token Throughput")
+    style_ax(ax, "Output Tokens / sec", "Concurrency Scaling - Output Token Throughput")
     ax.legend(frameon=False, loc="upper left", fontsize=11)
     ax.set_ylim(0, max(CONCURRENCY_SCALING["trtllm"]["throughput"]) * 1.25)
 
@@ -149,7 +149,7 @@ def chart_concurrency_throughput():
 
 
 # ===================================================================
-# CHART 2 — Concurrency Scaling: TTFT
+# CHART 2 - Concurrency Scaling: TTFT
 # ===================================================================
 def chart_concurrency_ttft():
     fig, ax = plt.subplots(figsize=(10, 5.5))
@@ -166,7 +166,7 @@ def chart_concurrency_ttft():
 
     ax.set_xticks(x)
     ax.set_xticklabels([f"c{c}" for c in CONCURRENCY_SCALING["concurrency"]], fontsize=13)
-    style_ax(ax, "Time To First Token (sec)", "Concurrency Scaling — TTFT (lower is better)")
+    style_ax(ax, "Time To First Token (sec)", "Concurrency Scaling - TTFT (lower is better)")
     ax.legend(frameon=False, loc="upper left", fontsize=11)
     ax.set_ylim(0, max(v / 1000 for v in CONCURRENCY_SCALING["vllm"]["ttft"]) * 1.25)
 
@@ -174,7 +174,7 @@ def chart_concurrency_ttft():
 
 
 # ===================================================================
-# CHART 3 — Concurrency Scaling: ITL
+# CHART 3 - Concurrency Scaling: ITL
 # ===================================================================
 def chart_concurrency_itl():
     fig, ax = plt.subplots(figsize=(10, 5.5))
@@ -191,7 +191,7 @@ def chart_concurrency_itl():
 
     ax.set_xticks(x)
     ax.set_xticklabels([f"c{c}" for c in CONCURRENCY_SCALING["concurrency"]], fontsize=13)
-    style_ax(ax, "Inter-Token Latency (ms)", "Concurrency Scaling — ITL (lower is better)")
+    style_ax(ax, "Inter-Token Latency (ms)", "Concurrency Scaling - ITL (lower is better)")
     ax.legend(frameon=False, loc="upper left", fontsize=11)
     ax.set_ylim(0, max(CONCURRENCY_SCALING["trtllm"]["itl"]) * 1.35)
 
@@ -199,7 +199,7 @@ def chart_concurrency_itl():
 
 
 # ===================================================================
-# CHART 4 — Long Context: Combined 2-panel
+# CHART 4 - Long Context: Combined 2-panel
 # ===================================================================
 def chart_long_context():
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5.5))
@@ -222,13 +222,13 @@ def chart_long_context():
     style_ax(ax2, "TTFT (sec)", "Time To First Token")
     ax2.set_ylim(0, max(v / 1000 for v in LONG_CONTEXT["ttft"]) * 1.25)
 
-    fig.suptitle("Long Context — ISL 8000, OSL 512, Concurrency 8", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
+    fig.suptitle("Long Context - ISL 8000, OSL 512, Concurrency 8", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
     fig.tight_layout()
     save(fig, "long_context")
 
 
 # ===================================================================
-# CHART 5 — Quantization: Combined 2-panel
+# CHART 5 - Quantization: Combined 2-panel
 # ===================================================================
 def chart_quantization():
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5.5))
@@ -251,13 +251,13 @@ def chart_quantization():
     style_ax(ax2, "TTFT (sec)", "Time To First Token")
     ax2.set_ylim(0, max(v / 1000 for v in QUANTIZATION["ttft"]) * 1.25)
 
-    fig.suptitle("Quantization Comparison — vLLM, Concurrency 32", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
+    fig.suptitle("Quantization Comparison - vLLM, Concurrency 32", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
     fig.tight_layout()
     save(fig, "quantization")
 
 
 # ===================================================================
-# CHART 6 — MoE: Combined 3-panel
+# CHART 6 - MoE: Combined 3-panel
 # ===================================================================
 def chart_moe():
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(14, 5.5))
@@ -288,13 +288,13 @@ def chart_moe():
     style_ax(ax3, "ITL (ms)", "Inter-Token Latency")
     ax3.set_ylim(0, max(MOE["itl"]) * 1.35)
 
-    fig.suptitle("MoE vs Dense — SGLang, Concurrency 32", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
+    fig.suptitle("MoE vs Dense - SGLang, Concurrency 32", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
     fig.tight_layout()
     save(fig, "moe_comparison")
 
 
 # ===================================================================
-# CHART 7 — Summary radar / heatmap-style comparison
+# CHART 7 - Summary radar / heatmap-style comparison
 # ===================================================================
 def chart_engine_summary():
     fig, ax = plt.subplots(figsize=(10, 5))
@@ -319,7 +319,7 @@ def chart_engine_summary():
     ax.set_xticklabels(categories, fontsize=10)
     ax.set_ylim(0, 1.15)
     ax.yaxis.set_major_formatter(ticker.PercentFormatter(xmax=1))
-    style_ax(ax, "Relative Score", "Engine Comparison — Normalized Performance (higher is better)")
+    style_ax(ax, "Relative Score", "Engine Comparison - Normalized Performance (higher is better)")
     ax.legend(frameon=False, loc="upper right", fontsize=11)
 
     save(fig, "engine_summary")
@@ -338,4 +338,4 @@ if __name__ == "__main__":
     chart_quantization()
     chart_moe()
     chart_engine_summary()
-    print(f"\nDone — {len(list(OUTPUT_DIR.glob('*.png')))} charts generated.")
+    print(f"\nDone - {len(list(OUTPUT_DIR.glob('*.png')))} charts generated.")
