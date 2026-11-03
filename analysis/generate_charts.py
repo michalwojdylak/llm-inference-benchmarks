@@ -91,9 +91,9 @@ def save(fig, name):
 # ===================================================================
 # DATA
 # ===================================================================
-# Concurrency, long-context and quantization numbers come from the matched rerun
+# Concurrency, long-context and quantization numbers come from the equal-budget runs
 # (aiperf-workspace/results_matched): FP8 KV cache and a 35,328-token KV budget on
-# every engine. MoE was not rerun and still uses aiperf-workspace/results.
+# every engine. MoE uses SGLang's default KV settings (aiperf-workspace/results).
 CONCURRENCY_SCALING = {
     "concurrency": [8, 32, 64],
     "vllm":   {"throughput": [119.2, 230.3, 228.9], "ttft": [4202, 9181, 40408], "itl": [50.1, 98.5, 99.2]},
@@ -311,7 +311,7 @@ def chart_engine_summary():
     # Normalized scores (higher = better, 0-1 scale)
     # "Higher is better" metrics: score = val / max_val
     # "Lower is better" metrics:  score = min_val / val  (best gets 1.0, worst still visible)
-    # Matched rerun only, so TensorRT-LLM's long-context bars are at the 35,328-token budget
+    # Equal-budget runs only, so TensorRT-LLM's long-context bars are at the 35,328-token budget
     vllm_scores   = [228.9/298.7, 1122/4202, 6336/9181, 70.2/98.5, 46.0/48.9, 48263/51602]
     sglang_scores = [283.3/298.7, 1122/2365, 6336/9080, 70.2/76.1, 48.9/48.9, 48263/48263]
     trtllm_scores = [298.7/298.7, 1122/1122, 6336/6336, 70.2/70.2, 25.1/48.9, 48263/82437]

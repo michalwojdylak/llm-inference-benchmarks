@@ -17,7 +17,7 @@ Performance benchmarks comparing **vLLM**, **SGLang**, and **TensorRT-LLM** infe
 |-------|-------------|------------|
 | Qwen/Qwen3-32B-FP8 | FP8 | vLLM, SGLang, TensorRT-LLM |
 | Qwen/Qwen3-32B-AWQ | INT4 AWQ | vLLM |
-| JunHowie/Qwen3-32B-GPTQ-Int4 (first round: AlphaGaO/Qwen3-32B-GPTQ) | INT4 GPTQ | vLLM |
+| JunHowie/Qwen3-32B-GPTQ-Int4 | INT4 GPTQ | vLLM |
 | Qwen/Qwen3-30B-A3B-FP8 | FP8 (MoE) | SGLang |
 
 ### Concurrency & Sequence Length Configurations
@@ -31,7 +31,7 @@ Performance benchmarks comparing **vLLM**, **SGLang**, and **TensorRT-LLM** infe
 
 ## Results Summary
 
-Experiments 1-3 below come from the November 2026 rerun in `aiperf-workspace/results_matched/`: FP8 KV cache on every engine, capped at the same 35,328-token KV budget, with `--max-model-len`/`--context-length`/`--max_seq_len` 9216, 8192 tokens per scheduler step, `ignore_eos` and server-side token counts. See [`matched-kv-rerun/`](matched-kv-rerun/) for the scripts and software versions. The first round (each engine on its own defaults, with BF16 KV on vLLM and SGLang) is kept in `aiperf-workspace/results/`.
+The concurrency, long-context and quantization results below are in `aiperf-workspace/results_matched/`: FP8 KV cache on every engine, capped at the same 35,328-token KV budget, with `--max-model-len`/`--context-length`/`--max_seq_len` 9216, 8192 tokens per scheduler step, `ignore_eos` and server-side token counts. See [`equal-kv-budget/`](equal-kv-budget/) for the scripts and software versions. `aiperf-workspace/results/` holds the MoE runs and an earlier round with each engine's default settings (BF16 KV cache on vLLM and SGLang, FP8 on TensorRT-LLM).
 
 ### Qwen3-32B-FP8 &mdash; Concurrency Scaling (ISL=1024, OSL=256)
 
@@ -47,7 +47,7 @@ Experiments 1-3 below come from the November 2026 rerun in `aiperf-workspace/res
 | TensorRT-LLM | 32 | 1.15 | 295.1 | 6,336 | 23,384 | 70.2 |
 | TensorRT-LLM | 64 | 1.17 | 298.7 | 30,137 | 46,226 | 71.5 |
 
-At concurrency 8, TTFT depends on whether requests arrive in synchronized waves (every request has the same length, so they finish and restart together). vLLM and SGLang ran in waves of 8, TensorRT-LLM in waves of about 4; `matched-kv-rerun/cluster.py` measures this.
+At concurrency 8, TTFT depends on whether requests arrive in synchronized waves (every request has the same length, so they finish and restart together). vLLM and SGLang ran in waves of 8, TensorRT-LLM in waves of about 4; `equal-kv-budget/cluster.py` measures this.
 
 ### Qwen3-32B-FP8 &mdash; Long Context (ISL=8000, OSL=512, Concurrency=8)
 
@@ -68,11 +68,11 @@ The last row is a 24-request diagnostic run in `aiperf-workspace/results_diag/`.
 | Qwen/Qwen3-32B-AWQ | 1.30 | 332.7 | 6,864 | 12,334 | 66.8 |
 | JunHowie/Qwen3-32B-GPTQ-Int4 | 1.34 | 342.5 | 6,520 | 11,358 | 65.4 |
 
-The first round used `AlphaGaO/Qwen3-32B-GPTQ`, which vLLM 0.32 rejects (`desc_act=True`).
+The earlier round in `results/` used `AlphaGaO/Qwen3-32B-GPTQ`, which vLLM 0.32 rejects (`desc_act=True`).
 
 ### SGLang &mdash; MoE Model (ISL=1024, OSL=256, Concurrency=32)
 
-First round only (BF16 KV cache, no budget cap); not rerun.
+Measured with SGLang's default BF16 KV cache and no budget cap, so not comparable with the tables above.
 
 | Model | Throughput (req/s) | Output (tok/s) | TTFT avg (ms) | TTFT p99 (ms) | ITL avg (ms) |
 |-------|-------------------|----------------|---------------|---------------|-------------|
@@ -100,13 +100,14 @@ llm-inference-benchmarks/
 ├── tensorrt-llm-workspace/      # TensorRT-LLM build & serve pipeline
 │   ├── README.md
 │   └── run_trtllm.py
-├── matched-kv-rerun/            # Equal FP8 KV budget rerun: driver, setup and analysis scripts
+├── equal-kv-budget/            # Equal FP8 KV budget runs: driver, setup and analysis scripts
+├── analysis/                    # Chart scripts (generate_charts.py, generate_kv_charts.py) and charts
 └── aiperf-workspace/            # AI-Perf benchmark runner & results
     ├── README.md
     ├── run_aiperf.py
-    ├── results_matched/         # Equal-budget rerun (Experiments 1-3)
+    ├── results_matched/         # Equal FP8 KV budget runs
     ├── results_diag/            # Diagnostic runs referenced in the blog post
-    └── results/                 # First round: raw experiment outputs (JSON, CSV, logs)
+    └── results/                 # MoE runs and an earlier round with default engine settings
         ├── vllm_Qwen3-32B-FP8_c32_isl1024_osl256_*/
         ├── sglang_Qwen3-32B-FP8_c32_isl1024_osl256_*/
         ├── tensorrtllm_Qwen3-32B-FP8_c32_isl1024_osl256_*/

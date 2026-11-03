@@ -1,6 +1,6 @@
-# Matched KV Budget Rerun
+# Equal KV Budget Runs
 
-Scripts for the November 2026 rerun of Experiments 1-3, where every engine uses an FP8 KV cache and the same KV budget. Results are in `aiperf-workspace/results_matched/` (main runs) and `aiperf-workspace/results_diag/` (diagnostics).
+Scripts for the benchmark runs where every engine uses an FP8 KV cache and the same KV budget. Results are in `aiperf-workspace/results_matched/` (main runs) and `aiperf-workspace/results_diag/` (diagnostics).
 
 The scripts expect the layout used on the benchmark machine: engine workspaces under `~/projects/hosting/{vllm-workspace,sglang-workspace,tensorrt-llm,aiperf-workspace}`, each with its own `.venv`, and these scripts in `~/rerun/` with a `logs/` folder.
 

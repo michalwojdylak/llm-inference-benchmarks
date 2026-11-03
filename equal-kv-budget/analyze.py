@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Summarise matched-KV rerun results: client metrics, decode occupancy, server queue/prefill split."""
+"""Summarise equal-KV-budget results: client metrics, decode occupancy, server queue/prefill split."""
 
 import glob
 import json
