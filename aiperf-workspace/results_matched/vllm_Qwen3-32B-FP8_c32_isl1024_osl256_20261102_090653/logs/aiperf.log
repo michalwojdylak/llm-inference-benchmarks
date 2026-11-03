@@ -1,0 +1,82 @@
+2026-11-02 09:06:54.469 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-11-02 09:06:54.475 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer Qwen/Qwen3-32B-FP8 detected
+2026-11-02 09:06:54.475 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-11-02 09:06:54.475 - aiperf.config.resolution.resolvers - INFO - HF cache hit (skipping prefetch): ['Qwen/Qwen3-32B-FP8']
+2026-11-02 09:06:54.806 - server_metrics_manager - INFO - Server Metrics: Discovered 1 endpoints: ['http://localhost:8000/metrics']
+2026-11-02 09:06:54.818 - GPUTelemetryJSONLWriter_b7ea292f - INFO - GPU telemetry export enabled: /home/ubuntu/projects/hosting/aiperf-workspace/results_matched/vllm_Qwen3-32B-FP8_c32_isl1024_osl256_20261102_090653/gpu_telemetry_export.jsonl
+2026-11-02 09:06:54.822 - system_controller - INFO - Registered Server Metrics Manager (id: 'server_metrics_manager')
+2026-11-02 09:06:54.828 - OTelMetricsResultsProcessor_e6d01fa5 - INFO - Telemetry streaming is disabled (set --otel-url and/or --mlflow-tracking-uri to enable)
+2026-11-02 09:06:54.828 - records_manager - INFO - OTel metrics streamer is disabled and will not be used: Telemetry streaming is disabled (set --otel-url and/or --mlflow-tracking-uri to enable)
+2026-11-02 09:06:54.829 - RecordExportResultsProcessor_cbe8a74d - INFO - Record metrics export enabled: /home/ubuntu/projects/hosting/aiperf-workspace/results_matched/vllm_Qwen3-32B-FP8_c32_isl1024_osl256_20261102_090653/profile_export.jsonl
+2026-11-02 09:06:54.878 - system_controller - INFO - Registered Records Manager (id: 'records_manager')
+2026-11-02 09:06:54.891 - system_controller - INFO - Registered Worker Manager (id: 'worker_manager')
+2026-11-02 09:06:54.920 - system_controller - INFO - Registered Gpu Telemetry Manager (id: 'gpu_telemetry_manager')
+2026-11-02 09:06:54.921 - system_controller - INFO - Registered Dataset Manager (id: 'dataset_manager')
+2026-11-02 09:06:55.011 - system_controller - INFO - Registered Timing Manager (id: 'timing_manager')
+2026-11-02 09:06:55.073 - system_controller - INFO - Registered Record Processor (id: 'record_processor_a8b046d9')
+2026-11-02 09:06:55.088 - system_controller - INFO - Registered Worker (id: 'worker_c44df582')
+2026-11-02 09:06:55.096 - system_controller - INFO - Registered Worker (id: 'worker_b3c0ca41')
+2026-11-02 09:06:55.099 - system_controller - INFO - Registered Worker (id: 'worker_6bb9943b')
+2026-11-02 09:06:55.107 - system_controller - INFO - Registered Worker (id: 'worker_1d466d19')
+2026-11-02 09:06:55.108 - system_controller - INFO - Registered Worker (id: 'worker_48912203')
+2026-11-02 09:06:55.289 - system_controller - INFO - AIPerf System is CONFIGURING
+2026-11-02 09:06:55.289 - system_controller - INFO - Configuring all services to start profiling
+2026-11-02 09:06:55.290 - timing_manager - INFO - Waiting for dataset to be configured before configuring timing
+2026-11-02 09:06:55.290 - dataset_manager - INFO - Configuring tokenizer(s) for dataset manager
+2026-11-02 09:06:55.290 - InferenceResultParser_332d6158 - INFO - Tokenization is disabled for this endpoint, skipping tokenizer configuration
+2026-11-02 09:06:55.303 - server_metrics_manager - INFO - Server Metrics: Capturing baseline metrics...
+2026-11-02 09:06:55.308 - gpu_telemetry_manager - WARNING - GPU Telemetry: http://localhost:9400/metrics is not reachable
+2026-11-02 09:06:55.309 - gpu_telemetry_manager - WARNING - GPU Telemetry: http://localhost:9401/metrics is not reachable
+2026-11-02 09:06:55.310 - system_controller - INFO - DCGM telemetry skipped: no DCGM endpoints reachable
+2026-11-02 09:06:55.320 - http://localhost:8000/metrics - INFO - Skipping unsupported summary metric: http_request_size_bytes
+2026-11-02 09:06:55.320 - http://localhost:8000/metrics - INFO - Skipping unsupported summary metric: http_response_size_bytes
+2026-11-02 09:06:55.322 - system_controller - INFO - Server metrics enabled - 1/1 endpoint(s) reachable.
+2026-11-02 09:06:56.310 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-32B-FP8/revision/main "HTTP/1.1 200 OK"
+2026-11-02 09:06:56.346 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-32B-FP8/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-11-02 09:06:56.367 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-32B-FP8/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-11-02 09:06:56.731 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-32B-FP8 "HTTP/1.1 200 OK"
+2026-11-02 09:06:56.733 - dataset_manager - INFO - Tokenizer(s) configured in 1.44 seconds
+2026-11-02 09:06:56.733 - dataset_manager - INFO - Configuring dataset for dataset_manager
+2026-11-02 09:06:57.315 - MemoryMapDatasetBackingStore_7e947dc9 - INFO - Memory-mapped backing store initialized (streaming to /tmp/aiperf_mmap_0361917c5069/dataset.dat)
+2026-11-02 09:06:57.339 - MemoryMapDatasetBackingStore_7e947dc9 - INFO - Data file finalized: 300 conversations, 1.44 MB
+2026-11-02 09:06:57.339 - MemoryMapDatasetBackingStore_7e947dc9 - INFO - Index file created: /tmp/aiperf_mmap_0361917c5069/index.dat
+2026-11-02 09:06:57.339 - dataset_manager - INFO - Backing store finalized: client_type=DatasetClientStoreType.MEMORY_MAP data_file_path=PosixPath('/tmp/aiperf_mmap_0361917c5069/dataset.dat') index_file_path=PosixPath('/tmp/aiperf_mmap_0361917c5069/index.dat') conversation_count=300 total_size_bytes=1508380 compressed_data_file_path=None compressed_index_file_path=None compressed_size_bytes=0
+2026-11-02 09:06:57.341 - dataset_manager - INFO - sampling strategy: sequential, unique conversations: 300, unique turn count: 300
+2026-11-02 09:06:57.342 - dataset_manager - INFO - Generating inputs.json file at /home/ubuntu/projects/hosting/aiperf-workspace/results_matched/vllm_Qwen3-32B-FP8_c32_isl1024_osl256_20261102_090653/inputs.json
+2026-11-02 09:06:57.351 - dataset_manager - INFO - inputs.json file generated in 0.01 seconds
+2026-11-02 09:06:57.352 - PhaseOrchestrator_ff557216 - INFO - Initialized 2 phase(s): ['Warmup', 'Profiling']
+2026-11-02 09:06:57.444 - dataset_manager - INFO - Dataset client initialized and freed 300 conversations from memory
+2026-11-02 09:06:57.444 - dataset_manager - INFO - Dataset configured in 0.71 seconds
+2026-11-02 09:06:57.445 - system_controller - INFO - All services configured in 2.16 seconds
+2026-11-02 09:06:57.445 - system_controller - INFO - AIPerf System is CONFIGURED
+2026-11-02 09:06:57.445 - server_metrics_manager - INFO - Server Metrics: Started 1 collector(s) successfully
+2026-11-02 09:06:57.447 - system_controller - INFO - All services started profiling successfully
+2026-11-02 09:06:57.447 - system_controller - INFO - AIPerf System is PROFILING
+2026-11-02 09:06:57.447 - RateTiming - INFO - Creating interval generator: pattern=concurrency_burst, rate=None, smoothness=None
+2026-11-02 09:06:57.448 - PhaseRunner - NOTICE - Phase warmup started | target: 30 requests
+2026-11-02 09:06:57.448 - records_manager - INFO - Credit phase start: warmup
+2026-11-02 09:06:57.450 - PhaseRunner - NOTICE - Phase warmup sending complete | sent=30, completed=0, in_flight=30 | sessions: sent=30, completed=0
+2026-11-02 09:07:34.947 - PhaseRunner - NOTICE - Phase warmup complete | completed=30, cancelled=0, errors=0 | sessions: completed=30, cancelled=0 | elapsed=37.50s
+2026-11-02 09:07:34.947 - RateTiming - INFO - Creating interval generator: pattern=concurrency_burst, rate=None, smoothness=None
+2026-11-02 09:07:34.947 - PhaseRunner - NOTICE - Phase profiling started | target: 300 requests
+2026-11-02 09:07:34.948 - records_manager - INFO - Credit phase start: profiling
+2026-11-02 09:08:05.574 - records_manager - WARNING - Token usage is reported but no prompt-cache read tokens were seen (usage.prompt_tokens_details.cached_tokens absent). If your server uses prefix/KV caching, enable cache reporting so AIPerf can populate the prompt-cache metrics: vLLM --enable-prompt-tokens-details, SGLang --enable-cache-report (TRT-LLM reports it by default).
+2026-11-02 09:12:45.845 - PhaseRunner - NOTICE - Phase profiling sending complete | sent=300, completed=268, in_flight=32 | sessions: sent=300, completed=268
+2026-11-02 09:12:45.846 - records_manager - INFO - Sent 300 requests. Waiting for all to complete...
+2026-11-02 09:13:08.434 - PhaseRunner - NOTICE - Phase profiling complete | completed=300, cancelled=0, errors=0 | sessions: completed=300, cancelled=0 | elapsed=333.49s
+2026-11-02 09:13:08.434 - PhaseOrchestrator_ff557216 - NOTICE - All credits completed
+2026-11-02 09:13:08.435 - system_controller - INFO - Received credits complete from 'timing_manager'
+2026-11-02 09:13:08.435 - records_manager - INFO - Received CREDIT_PHASE_COMPLETE message, Phase complete: PhaseRecordsStats(phase=CreditPhase.PROFILING, start_ns=1793610454947817573, sent_end_ns=1793610765845673462, requests_end_ns=1793610788434520774, total_expected_requests=300, expected_duration_sec=None, expected_num_sessions=None, expected_grace_period_sec=None, final_requests_sent=None, final_requests_completed=300, final_requests_cancelled=0, final_request_errors=0, final_sent_sessions=None, final_completed_sessions=None, final_cancelled_sessions=None, timeout_triggered=False, grace_period_timeout_triggered=False, was_cancelled=False, records_end_ns=None, success_records=298, error_records=0)
+2026-11-02 09:13:08.435 - records_manager - NOTICE - All requests have completed, please wait for the results to be processed (currently 298 of 300 records processed)...
+2026-11-02 09:13:08.435 - records_manager - INFO - All credits complete, please wait for the results to be processed...
+2026-11-02 09:13:08.441 - records_manager - INFO - Processed 300 valid requests and 0 errors (300 total).
+2026-11-02 09:13:08.441 - records_manager - INFO - Received all records, processing now...
+2026-11-02 09:13:08.442 - server_metrics_manager - INFO - Server Metrics: Profiling complete, capturing final metrics...
+2026-11-02 09:13:08.443 - records_manager - INFO - Waiting 2.0s for server metrics flush period...
+2026-11-02 09:13:10.434 - records_manager - INFO - Processing records results...
+2026-11-02 09:13:10.448 - system_controller - INFO - Waiting for server metrics results...
+2026-11-02 09:13:10.448 - system_controller - INFO - Waiting for server metrics results...
+2026-11-02 09:13:10.472 - records_manager - INFO - _finalize_and_process_results completed
+2026-11-02 09:13:10.474 - system_controller - INFO - All results received, initiating shutdown
+2026-11-02 09:13:11.078 - ExporterManager - INFO - Exporting all records
+2026-11-02 09:13:11.144 - ExporterManager - INFO - Exporting console data

@@ -1,0 +1,1 @@
+/home/ubuntu/projects/hosting/tensorrt-llm/.venv/bin/trtllm-serve serve /home/ubuntu/projects/hosting/tensorrt-llm/Qwen3-32B-FP8-engine --backend tensorrt --tokenizer Qwen/Qwen3-32B-FP8 --max_batch_size 64 --host 0.0.0.0 --port 8000 --extra_llm_api_options /home/ubuntu/rerun/trtllm_options.yaml

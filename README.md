@@ -17,7 +17,7 @@ Performance benchmarks comparing **vLLM**, **SGLang**, and **TensorRT-LLM** infe
 |-------|-------------|------------|
 | Qwen/Qwen3-32B-FP8 | FP8 | vLLM, SGLang, TensorRT-LLM |
 | Qwen/Qwen3-32B-AWQ | INT4 AWQ | vLLM |
-| Qwen/Qwen3-32B-GPTQ | INT4 GPTQ | vLLM |
+| JunHowie/Qwen3-32B-GPTQ-Int4 (first round: AlphaGaO/Qwen3-32B-GPTQ) | INT4 GPTQ | vLLM |
 | Qwen/Qwen3-30B-A3B-FP8 | FP8 (MoE) | SGLang |
 
 ### Concurrency & Sequence Length Configurations
@@ -31,37 +31,48 @@ Performance benchmarks comparing **vLLM**, **SGLang**, and **TensorRT-LLM** infe
 
 ## Results Summary
 
+Experiments 1-3 below come from the November 2026 rerun in `aiperf-workspace/results_matched/`: FP8 KV cache on every engine, capped at the same 35,328-token KV budget, with `--max-model-len`/`--context-length`/`--max_seq_len` 9216, 8192 tokens per scheduler step, `ignore_eos` and server-side token counts. See [`matched-kv-rerun/`](matched-kv-rerun/) for the scripts and software versions. The first round (each engine on its own defaults, with BF16 KV on vLLM and SGLang) is kept in `aiperf-workspace/results/`.
+
 ### Qwen3-32B-FP8 &mdash; Concurrency Scaling (ISL=1024, OSL=256)
 
 | Framework | Concurrency | Throughput (req/s) | Output (tok/s) | TTFT avg (ms) | TTFT p99 (ms) | ITL avg (ms) |
 |-----------|-------------|-------------------|----------------|---------------|---------------|-------------|
-| vLLM | 8 | 0.50 | 127.1 | 834 | 1,838 | 59.2 |
-| vLLM | 32 | 0.95 | 243.9 | 11,125 | 25,768 | 84.7 |
-| vLLM | 64 | 0.96 | 244.5 | 40,565 | 49,068 | 84.8 |
-| SGLang | 8 | 0.45 | 115.7 | 2,029 | 2,609 | 60.6 |
-| SGLang | 32 | 0.97 | 249.1 | 12,332 | 27,517 | 76.6 |
-| SGLang | 64 | 0.98 | 250.1 | 40,601 | 53,767 | 77.8 |
-| TensorRT-LLM | 8 | 0.46 | 117.9 | 2,541 | 2,891 | 54.0 |
-| TensorRT-LLM | 32 | 1.13 | 289.2 | 4,554 | 10,325 | 83.0 |
-| TensorRT-LLM | 64 | 1.34 | 342.1 | 11,738 | 42,304 | 124.4 |
+| vLLM | 8 | 0.47 | 119.2 | 4,202 | 6,724 | 50.1 |
+| vLLM | 32 | 0.90 | 230.3 | 9,181 | 16,569 | 98.5 |
+| vLLM | 64 | 0.89 | 228.9 | 40,408 | 63,466 | 99.2 |
+| SGLang | 8 | 0.46 | 118.0 | 2,365 | 2,640 | 58.0 |
+| SGLang | 32 | 1.10 | 282.1 | 9,080 | 28,291 | 76.1 |
+| SGLang | 64 | 1.11 | 283.3 | 34,020 | 53,361 | 77.5 |
+| TensorRT-LLM | 8 | 0.47 | 119.4 | 1,122 | 1,824 | 54.7 |
+| TensorRT-LLM | 32 | 1.15 | 295.1 | 6,336 | 23,384 | 70.2 |
+| TensorRT-LLM | 64 | 1.17 | 298.7 | 30,137 | 46,226 | 71.5 |
+
+At concurrency 8, TTFT depends on whether requests arrive in synchronized waves (every request has the same length, so they finish and restart together). vLLM and SGLang ran in waves of 8, TensorRT-LLM in waves of about 4; `matched-kv-rerun/cluster.py` measures this.
 
 ### Qwen3-32B-FP8 &mdash; Long Context (ISL=8000, OSL=512, Concurrency=8)
 
-| Framework | Throughput (req/s) | Output (tok/s) | TTFT avg (ms) | TTFT p99 (ms) | ITL avg (ms) |
-|-----------|-------------------|----------------|---------------|---------------|-------------|
-| vLLM | 0.08 | 41.0 | 63,824 | 75,340 | 68.0 |
-| SGLang | 0.08 | 38.2 | 68,593 | 82,825 | 72.6 |
-| TensorRT-LLM | 0.15 | 75.9 | 8,560 | 38,053 | 88.4 |
+| Framework | KV budget (tokens) | Throughput (req/s) | Output (tok/s) | TTFT avg (ms) | TTFT p99 (ms) | ITL avg (ms) |
+|-----------|-------------------|-------------------|----------------|---------------|---------------|-------------|
+| vLLM | 35,328 | 0.09 | 46.0 | 51,602 | 54,478 | 72.3 |
+| SGLang | 35,328 | 0.10 | 48.9 | 48,263 | 53,816 | 68.4 |
+| TensorRT-LLM | 35,328 | 0.05 | 25.1 | 82,437 | 85,486 | 155.6 |
+| TensorRT-LLM | 71,552 (natural) | 0.16 | 81.8 | 5,050 | 14,138 | 87.9 |
+
+The last row is a 24-request diagnostic run in `aiperf-workspace/results_diag/`.
 
 ### Quantization Comparison &mdash; vLLM, Concurrency=32 (ISL=1024, OSL=256)
 
 | Model | Throughput (req/s) | Output (tok/s) | TTFT avg (ms) | TTFT p99 (ms) | ITL avg (ms) |
 |-------|-------------------|----------------|---------------|---------------|-------------|
-| Qwen3-32B-FP8 | 0.95 | 243.9 | 11,125 | 25,768 | 84.7 |
-| Qwen3-32B-AWQ | 1.36 | 349.3 | 2,770 | 11,617 | 78.9 |
-| Qwen3-32B-GPTQ | 1.36 | 347.8 | 2,732 | 11,522 | 79.3 |
+| Qwen/Qwen3-32B-FP8 | 0.90 | 230.3 | 9,181 | 16,569 | 98.5 |
+| Qwen/Qwen3-32B-AWQ | 1.30 | 332.7 | 6,864 | 12,334 | 66.8 |
+| JunHowie/Qwen3-32B-GPTQ-Int4 | 1.34 | 342.5 | 6,520 | 11,358 | 65.4 |
+
+The first round used `AlphaGaO/Qwen3-32B-GPTQ`, which vLLM 0.32 rejects (`desc_act=True`).
 
 ### SGLang &mdash; MoE Model (ISL=1024, OSL=256, Concurrency=32)
+
+First round only (BF16 KV cache, no budget cap); not rerun.
 
 | Model | Throughput (req/s) | Output (tok/s) | TTFT avg (ms) | TTFT p99 (ms) | ITL avg (ms) |
 |-------|-------------------|----------------|---------------|---------------|-------------|
@@ -89,10 +100,13 @@ llm-inference-benchmarks/
 ├── tensorrt-llm-workspace/      # TensorRT-LLM build & serve pipeline
 │   ├── README.md
 │   └── run_trtllm.py
+├── matched-kv-rerun/            # Equal FP8 KV budget rerun: driver, setup and analysis scripts
 └── aiperf-workspace/            # AI-Perf benchmark runner & results
     ├── README.md
     ├── run_aiperf.py
-    └── results/                 # Raw experiment outputs (JSON, CSV, logs)
+    ├── results_matched/         # Equal-budget rerun (Experiments 1-3)
+    ├── results_diag/            # Diagnostic runs referenced in the blog post
+    └── results/                 # First round: raw experiment outputs (JSON, CSV, logs)
         ├── vllm_Qwen3-32B-FP8_c32_isl1024_osl256_*/
         ├── sglang_Qwen3-32B-FP8_c32_isl1024_osl256_*/
         ├── tensorrtllm_Qwen3-32B-FP8_c32_isl1024_osl256_*/
