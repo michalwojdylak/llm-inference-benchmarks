@@ -91,26 +91,31 @@ def save(fig, name):
 # ===================================================================
 # DATA
 # ===================================================================
+# Concurrency, long-context and quantization numbers come from the equal-budget runs
+# (aiperf-workspace/results_matched): FP8 KV cache and a 35,328-token KV budget on
+# every engine. MoE uses SGLang's default KV settings (aiperf-workspace/results).
 CONCURRENCY_SCALING = {
     "concurrency": [8, 32, 64],
-    "vllm":   {"throughput": [127.1, 243.9, 244.5], "ttft": [834, 11125, 40565], "itl": [59.2, 84.7, 84.8]},
-    "sglang": {"throughput": [115.7, 249.1, 250.1], "ttft": [2029, 12332, 40601], "itl": [60.6, 76.6, 77.8]},
-    "trtllm": {"throughput": [117.9, 289.2, 342.1], "ttft": [2541, 4554, 11738], "itl": [54.0, 83.0, 124.4]},
+    "vllm":   {"throughput": [119.2, 230.3, 228.9], "ttft": [4202, 9181, 40408], "itl": [50.1, 98.5, 99.2]},
+    "sglang": {"throughput": [118.0, 282.1, 283.3], "ttft": [2365, 9080, 34020], "itl": [58.0, 76.1, 77.5]},
+    "trtllm": {"throughput": [119.4, 295.1, 298.7], "ttft": [1122, 6336, 30137], "itl": [54.7, 70.2, 71.5]},
 }
 
+# The last bar is TensorRT-LLM at its natural KV capacity (71,552 tokens), a 24-request
+# run from aiperf-workspace/results_diag.
 LONG_CONTEXT = {
-    "engines": ["vLLM", "SGLang", "TensorRT-LLM"],
-    "throughput": [41.0, 38.2, 75.9],
-    "ttft": [63824, 68593, 8560],
-    "itl": [68.0, 72.6, 88.4],
-    "colors": [COLORS["vllm"], COLORS["sglang"], COLORS["trtllm"]],
+    "engines": ["vLLM", "SGLang", "TensorRT-LLM", "TensorRT-LLM\n(full KV cache)"],
+    "throughput": [46.0, 48.9, 25.1, 81.8],
+    "ttft": [51602, 48263, 82437, 5050],
+    "itl": [72.3, 68.4, 155.6, 87.9],
+    "colors": [COLORS["vllm"], COLORS["sglang"], COLORS["trtllm"], COLORS["trtllm"]],
 }
 
 QUANTIZATION = {
     "models": ["FP8", "AWQ", "GPTQ"],
-    "throughput": [243.9, 349.3, 347.8],
-    "ttft": [11125, 2770, 2732],
-    "itl": [84.7, 78.9, 79.3],
+    "throughput": [230.3, 332.7, 342.5],
+    "ttft": [9181, 6864, 6520],
+    "itl": [98.5, 66.8, 65.4],
     "colors": [COLORS["fp8"], COLORS["awq"], COLORS["gptq"]],
 }
 
@@ -141,7 +146,7 @@ def chart_concurrency_throughput():
 
     ax.set_xticks(x)
     ax.set_xticklabels([f"c{c}" for c in CONCURRENCY_SCALING["concurrency"]], fontsize=13)
-    style_ax(ax, "Output Tokens / sec", "Concurrency Scaling - Output Token Throughput")
+    style_ax(ax, "Output Tokens / sec", "Concurrency Scaling - Output Token Throughput (equal KV budget)")
     ax.legend(frameon=False, loc="upper left", fontsize=11)
     ax.set_ylim(0, max(CONCURRENCY_SCALING["trtllm"]["throughput"]) * 1.25)
 
@@ -166,7 +171,7 @@ def chart_concurrency_ttft():
 
     ax.set_xticks(x)
     ax.set_xticklabels([f"c{c}" for c in CONCURRENCY_SCALING["concurrency"]], fontsize=13)
-    style_ax(ax, "Time To First Token (sec)", "Concurrency Scaling - TTFT (lower is better)")
+    style_ax(ax, "Time To First Token (sec)", "Concurrency Scaling - TTFT, equal KV budget (lower is better)")
     ax.legend(frameon=False, loc="upper left", fontsize=11)
     ax.set_ylim(0, max(v / 1000 for v in CONCURRENCY_SCALING["vllm"]["ttft"]) * 1.25)
 
@@ -191,9 +196,9 @@ def chart_concurrency_itl():
 
     ax.set_xticks(x)
     ax.set_xticklabels([f"c{c}" for c in CONCURRENCY_SCALING["concurrency"]], fontsize=13)
-    style_ax(ax, "Inter-Token Latency (ms)", "Concurrency Scaling - ITL (lower is better)")
+    style_ax(ax, "Inter-Token Latency (ms)", "Concurrency Scaling - ITL, equal KV budget (lower is better)")
     ax.legend(frameon=False, loc="upper left", fontsize=11)
-    ax.set_ylim(0, max(CONCURRENCY_SCALING["trtllm"]["itl"]) * 1.35)
+    ax.set_ylim(0, max(max(CONCURRENCY_SCALING[e]["itl"]) for e in ("vllm", "sglang", "trtllm")) * 1.35)
 
     save(fig, "concurrency_itl")
 
@@ -208,21 +213,23 @@ def chart_long_context():
 
     # Throughput
     bars1 = ax1.bar(x, LONG_CONTEXT["throughput"], w, color=LONG_CONTEXT["colors"], edgecolor="none", zorder=3)
+    bars1[-1].set(hatch="//", edgecolor=BG_COLOR)
     add_bar_labels(ax1, bars1, padding=0.8)
     ax1.set_xticks(x)
-    ax1.set_xticklabels(LONG_CONTEXT["engines"], fontsize=11)
+    ax1.set_xticklabels(LONG_CONTEXT["engines"], fontsize=10)
     style_ax(ax1, "Output Tokens / sec", "Throughput")
     ax1.set_ylim(0, max(LONG_CONTEXT["throughput"]) * 1.3)
 
     # TTFT
     bars2 = ax2.bar(x, [v / 1000 for v in LONG_CONTEXT["ttft"]], w, color=LONG_CONTEXT["colors"], edgecolor="none", zorder=3)
+    bars2[-1].set(hatch="//", edgecolor=BG_COLOR)
     add_bar_labels(ax2, bars2, fmt="{:.1f}s", padding=0.8)
     ax2.set_xticks(x)
-    ax2.set_xticklabels(LONG_CONTEXT["engines"], fontsize=11)
+    ax2.set_xticklabels(LONG_CONTEXT["engines"], fontsize=10)
     style_ax(ax2, "TTFT (sec)", "Time To First Token")
     ax2.set_ylim(0, max(v / 1000 for v in LONG_CONTEXT["ttft"]) * 1.25)
 
-    fig.suptitle("Long Context - ISL 8000, OSL 512, Concurrency 8", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
+    fig.suptitle("Long Context - ISL 8000, OSL 512, Concurrency 8, FP8 KV", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
     fig.tight_layout()
     save(fig, "long_context")
 
@@ -251,7 +258,7 @@ def chart_quantization():
     style_ax(ax2, "TTFT (sec)", "Time To First Token")
     ax2.set_ylim(0, max(v / 1000 for v in QUANTIZATION["ttft"]) * 1.25)
 
-    fig.suptitle("Quantization Comparison - vLLM, Concurrency 32", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
+    fig.suptitle("Quantization Comparison - vLLM, Concurrency 32, equal KV budget", fontsize=16, fontweight="bold", color=TEXT_COLOR, y=1.02)
     fig.tight_layout()
     save(fig, "quantization")
 
@@ -304,9 +311,10 @@ def chart_engine_summary():
     # Normalized scores (higher = better, 0-1 scale)
     # "Higher is better" metrics: score = val / max_val
     # "Lower is better" metrics:  score = min_val / val  (best gets 1.0, worst still visible)
-    vllm_scores   = [244.5/342.1, 834/834,    4554/11125, 76.6/84.7,  41.0/75.9, 8560/63824]
-    sglang_scores = [250.1/342.1, 834/2029,   4554/12332, 76.6/76.6,  38.2/75.9, 8560/68593]
-    trtllm_scores = [342.1/342.1, 834/2541,   4554/4554,  76.6/124.4, 75.9/75.9, 8560/8560]
+    # Equal-budget runs only, so TensorRT-LLM's long-context bars are at the 35,328-token budget
+    vllm_scores   = [228.9/298.7, 1122/4202, 6336/9181, 70.2/98.5, 46.0/48.9, 48263/51602]
+    sglang_scores = [283.3/298.7, 1122/2365, 6336/9080, 70.2/76.1, 48.9/48.9, 48263/48263]
+    trtllm_scores = [298.7/298.7, 1122/1122, 6336/6336, 70.2/70.2, 25.1/48.9, 48263/82437]
 
     x = np.arange(len(categories))
     w = 0.24
@@ -319,8 +327,8 @@ def chart_engine_summary():
     ax.set_xticklabels(categories, fontsize=10)
     ax.set_ylim(0, 1.15)
     ax.yaxis.set_major_formatter(ticker.PercentFormatter(xmax=1))
-    style_ax(ax, "Relative Score", "Engine Comparison - Normalized Performance (higher is better)")
-    ax.legend(frameon=False, loc="upper right", fontsize=11)
+    style_ax(ax, "Relative Score", "Engine Comparison - Equal KV Budget (higher is better)")
+    ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, fontsize=11)
 
     save(fig, "engine_summary")
 

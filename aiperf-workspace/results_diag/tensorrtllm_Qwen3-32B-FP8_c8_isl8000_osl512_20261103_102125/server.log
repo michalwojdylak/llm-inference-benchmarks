@@ -1,0 +1,385 @@
+/home/ubuntu/projects/hosting/tensorrt-llm/.venv/lib/python3.12/site-packages/modelopt/torch/__init__.py:36: UserWarning: transformers version 4.57.3 is incompatible with nvidia-modelopt and may cause issues. Please install recommended version with `pip install nvidia-modelopt[hf]` if working with HF models.
+  _warnings.warn(
+[TensorRT-LLM] TensorRT LLM version: 1.2.1
+/home/ubuntu/projects/hosting/tensorrt-llm/.venv/lib/python3.12/site-packages/tensorrt_llm/serve/openai_protocol.py:104: UserWarning: Field name "schema" in "ResponseFormat" shadows an attribute in parent "OpenAIBaseModel"
+  class ResponseFormat(OpenAIBaseModel):
+[11/03/2026-10:16:47] [TRT-LLM] [W] Overriding kv_cache_config 
+[11/03/2026-10:16:47] [TRT-LLM] [I] Using LLM with TensorRT backend
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.nccl_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.producer = {'name': 'modelopt', 'version': '0.37.0'}
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.share_embedding_table = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.residual_mlp = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.bias = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.rotary_pct = 1.0
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.rank = 0
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.decoder = qwen
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.rmsnorm = True
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.lm_head_bias = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.seq_length = 8192
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.qwen_type = qwen3
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.moe_intermediate_size = 0
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.moe_shared_expert_intermediate_size = 0
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.tie_word_embeddings = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.model_type = qwen
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.dtype to bfloat16.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.bert_attention_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.gpt_attention_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.gemm_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.gemm_swiglu_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.fp8_rowwise_gemm_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.qserve_gemm_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.identity_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.nccl_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.lora_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.dora_plugin to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.weight_only_groupwise_quant_matmul_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.weight_only_quant_matmul_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.smooth_quant_plugins to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.smooth_quant_gemm_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.layernorm_quantization_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.rmsnorm_quantization_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.quantize_per_token_plugin to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.quantize_tensor_plugin to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.moe_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.mamba_conv1d_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.low_latency_gemm_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.low_latency_gemm_swiglu_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.gemm_allreduce_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.context_fmha to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.bert_context_fmha_fp32_acc to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.paged_kv_cache to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.remove_input_padding to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.norm_quant_fusion to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.reduce_fusion to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.user_buffer to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.tokens_per_block to 32.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.use_paged_context_fmha to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.use_fp8_context_fmha to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.fuse_fp4_quant to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.multiple_profiles to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.paged_state to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.streamingllm to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.manage_weights to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.use_fused_mlp to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.pp_reduce_scatter to False.
+[11/03/2026-10:16:47] [TRT-LLM] [W] The build_config is ignored for model format of TLLM_ENGINE.
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.producer = {'name': 'modelopt', 'version': '0.37.0'}
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.share_embedding_table = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.residual_mlp = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.bias = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.rotary_pct = 1.0
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.rank = 0
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.decoder = qwen
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.rmsnorm = True
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.lm_head_bias = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.seq_length = 8192
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.qwen_type = qwen3
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.moe_intermediate_size = 0
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.moe_shared_expert_intermediate_size = 0
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.tie_word_embeddings = False
+[11/03/2026-10:16:47] [TRT-LLM] [W] Implicitly setting QWenConfig.model_type = qwen
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.dtype to bfloat16.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.bert_attention_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.gpt_attention_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.gemm_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.gemm_swiglu_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.fp8_rowwise_gemm_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.qserve_gemm_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.identity_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.nccl_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.lora_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.dora_plugin to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.weight_only_groupwise_quant_matmul_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.weight_only_quant_matmul_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.smooth_quant_plugins to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.smooth_quant_gemm_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.layernorm_quantization_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.rmsnorm_quantization_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.quantize_per_token_plugin to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.quantize_tensor_plugin to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.moe_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.mamba_conv1d_plugin to auto.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.low_latency_gemm_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.low_latency_gemm_swiglu_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.gemm_allreduce_plugin to None.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.context_fmha to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.bert_context_fmha_fp32_acc to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.paged_kv_cache to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.remove_input_padding to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.norm_quant_fusion to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.reduce_fusion to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.user_buffer to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.tokens_per_block to 32.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.use_paged_context_fmha to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.use_fp8_context_fmha to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.fuse_fp4_quant to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.multiple_profiles to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.paged_state to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.streamingllm to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.manage_weights to False.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.use_fused_mlp to True.
+[11/03/2026-10:16:47] [TRT-LLM] [I] Set PluginConfig.pp_reduce_scatter to False.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[11/03/2026-10:16:47] [TRT-LLM] [W] Failed to load hf generation config from /home/ubuntu/projects/hosting/tensorrt-llm/Qwen3-32B-FP8-engine, encounter error: /home/ubuntu/projects/hosting/tensorrt-llm/Qwen3-32B-FP8-engine does not appear to have a file named generation_config.json. Checkout 'https://huggingface.co//home/ubuntu/projects/hosting/tensorrt-llm/Qwen3-32B-FP8-engine/tree/main' for available files.
+[11/03/2026-10:16:47] [TRT-LLM] [W] Orchestrator is creating IPC executor
+[33;20mrank 0 using MpiPoolSession to spawn MPI processes
+[0m[11/03/2026-10:16:47] [TRT-LLM] [I] Generating a new HMAC key for server proxy_request_queue
+[11/03/2026-10:16:47] [TRT-LLM] [I] Generating a new HMAC key for server worker_init_status_queue
+[11/03/2026-10:16:47] [TRT-LLM] [I] Generating a new HMAC key for server proxy_result_queue
+Multiple distributions found for package optimum. Picked distribution: optimum
+Multiple distributions found for package modelopt. Picked distribution: nvidia-modelopt
+/home/ubuntu/projects/hosting/tensorrt-llm/.venv/lib/python3.12/site-packages/modelopt/torch/__init__.py:36: UserWarning: transformers version 4.57.3 is incompatible with nvidia-modelopt and may cause issues. Please install recommended version with `pip install nvidia-modelopt[hf]` if working with HF models.
+  _warnings.warn(
+[TensorRT-LLM] TensorRT LLM version: 1.2.1
+/home/ubuntu/projects/hosting/tensorrt-llm/.venv/lib/python3.12/site-packages/tensorrt_llm/serve/openai_protocol.py:104: UserWarning: Field name "schema" in "ResponseFormat" shadows an attribute in parent "OpenAIBaseModel"
+  class ResponseFormat(OpenAIBaseModel):
+[TensorRT-LLM][INFO] Refreshed the MPI local session
+[11/03/2026-10:16:59] [TRT-LLM] [W] Worker process 35696 is affined to run on the following CPUs: [2, 6] (subset of all logical CPUs). This may harm performance if set incorrectly.
+[11/03/2026-10:16:59] [TRT-LLM] [W] Worker process 35696 has constrained CPU affinity but `TLLM_NUMA_AWARE_WORKER_AFFINITY` is not set. Removing CPU affinity constraints.
+[TensorRT-LLM][INFO] Engine version 1.2.1 found in the config file, assuming engine(s) built by new builder API.
+[TensorRT-LLM][INFO] Refreshed the MPI local session
+[TensorRT-LLM][INFO] MPI size: 1, MPI local size: 1, rank: 0
+[TensorRT-LLM][INFO] Using user-specified devices: (0)
+[TensorRT-LLM][INFO] Rank 0 is using GPU 0
+[TensorRT-LLM][INFO] TRTGptModel maxNumSequences: 64
+[TensorRT-LLM][INFO] TRTGptModel maxBatchSize: 64
+[TensorRT-LLM][INFO] TRTGptModel maxBeamWidth: 1
+[TensorRT-LLM][INFO] TRTGptModel maxSequenceLen: 9216
+[TensorRT-LLM][INFO] TRTGptModel maxDraftLen: 0
+[TensorRT-LLM][INFO] TRTGptModel mMaxAttentionWindowSize: (9216) * 64
+[TensorRT-LLM][INFO] TRTGptModel enableTrtOverlap: 0
+[TensorRT-LLM][INFO] TRTGptModel normalizeLogProbs: 0
+[TensorRT-LLM][INFO] TRTGptModel maxNumTokens: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxInputLen: 8192 = min(maxSequenceLen - 1, maxNumTokens) since context FMHA and usePackedInput are enabled
+[TensorRT-LLM][INFO] TRTGptModel If model type is encoder, maxInputLen would be reset in trtEncoderModel to maxInputLen: min(maxSequenceLen, maxNumTokens).
+[TensorRT-LLM][INFO] Capacity Scheduler Policy: GUARANTEED_NO_EVICT
+[TensorRT-LLM][INFO] Context Chunking Scheduler Policy: None
+[TensorRT-LLM][INFO] Loaded engine size: 32769 MiB
+[TensorRT-LLM][INFO] Engine load time 259132 ms
+[TensorRT-LLM][INFO] Inspecting the engine to identify potential runtime issues...
+[TensorRT-LLM][INFO] The profiling verbosity of the engine does not allow this analysis to proceed. Re-build the engine with 'detailed' profiling verbosity to get more diagnostics.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 1680.01 MiB for execution context memory.
+[TensorRT-LLM][INFO] gatherContextLogits: 0
+[TensorRT-LLM][INFO] gatherGenerationLogits: 0
+[TensorRT-LLM][INFO] [MS] Running engine with multi stream info
+[TensorRT-LLM][INFO] [MS] Number of aux streams is 1
+[TensorRT-LLM][INFO] [MS] Number of total worker streams is 2
+[TensorRT-LLM][INFO] [MS] The main stream provided by execute/enqueue calls is the first worker stream
+[TensorRT-LLM][INFO] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 32748 (MiB)
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 25.33 MB GPU memory for runtime buffers.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 141.84 MB GPU memory for decoder.
+[TensorRT-LLM][INFO] Memory usage when calculating max tokens in paged kv cache: total: 44.39 GiB, available: 9.70 GiB
+[TensorRT-LLM][INFO] Blocks per window size:
+[TensorRT-LLM][INFO] [windowSize=9216] {.primaryBlocks=2236, .secondayBlocks=0}
+[TensorRT-LLM][INFO] Max KV cache blocks per sequence: 288 [window size=9216], tokens per block=32, primary blocks=2236, secondary blocks=0, max sequence length=9216
+[TensorRT-LLM][INFO] Number of tokens per block: 32.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 8.73 GiB for max tokens in paged KV cache (71552).
+[TensorRT-LLM][INFO] CacheTransceiver is disabled.
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.producer = {'name': 'modelopt', 'version': '0.37.0'}
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.share_embedding_table = False
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.residual_mlp = False
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.bias = False
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.rotary_pct = 1.0
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.rank = 0
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.decoder = qwen
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.rmsnorm = True
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.lm_head_bias = False
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.seq_length = 8192
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.qwen_type = qwen3
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.moe_intermediate_size = 0
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.moe_shared_expert_intermediate_size = 0
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.tie_word_embeddings = False
+[11/03/2026-10:21:19] [TRT-LLM] [W] Implicitly setting QWenConfig.model_type = qwen
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.dtype to bfloat16.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.bert_attention_plugin to auto.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.gpt_attention_plugin to auto.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.gemm_plugin to auto.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.gemm_swiglu_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.fp8_rowwise_gemm_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.qserve_gemm_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.identity_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.nccl_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.lora_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.dora_plugin to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.weight_only_groupwise_quant_matmul_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.weight_only_quant_matmul_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.smooth_quant_plugins to True.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.smooth_quant_gemm_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.layernorm_quantization_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.rmsnorm_quantization_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.quantize_per_token_plugin to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.quantize_tensor_plugin to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.moe_plugin to auto.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.mamba_conv1d_plugin to auto.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.low_latency_gemm_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.low_latency_gemm_swiglu_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.gemm_allreduce_plugin to None.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.context_fmha to True.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.bert_context_fmha_fp32_acc to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.paged_kv_cache to True.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.remove_input_padding to True.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.norm_quant_fusion to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.reduce_fusion to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.user_buffer to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.tokens_per_block to 32.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.use_paged_context_fmha to True.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.use_fp8_context_fmha to True.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.fuse_fp4_quant to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.multiple_profiles to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.paged_state to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.streamingllm to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.manage_weights to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.use_fused_mlp to True.
+[11/03/2026-10:21:19] [TRT-LLM] [I] Set PluginConfig.pp_reduce_scatter to False.
+[11/03/2026-10:21:19] [TRT-LLM] [I] RPCServer is bound to ipc:///tmp/rpc_test_8f02e4b9-fdd7-4e47-92c6-84d9f2a7b3b8
+[11/03/2026-10:21:19] [TRT-LLM] [I] RPC Server started and listening on ipc:///tmp/rpc_test_8f02e4b9-fdd7-4e47-92c6-84d9f2a7b3b8
+[11/03/2026-10:21:19] [TRT-LLM] [I] RPC Server has started.
+[11/03/2026-10:21:19] [TRT-LLM] [I] get signal from executor worker
+INFO:     Started server process [35648]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:52930 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52944 - "HEAD /metrics HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:52932 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52944 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37728 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37748 - "GET /prometheus/metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37760 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37758 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37812 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37786 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37794 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37808 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37822 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37830 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37840 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39824 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39834 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42724 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42736 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42750 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58822 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58836 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45802 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45804 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45816 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60754 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37760 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37758 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37812 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37786 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60766 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37794 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40624 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40618 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40636 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37830 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40652 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40658 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51802 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51810 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40990 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40992 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40998 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34006 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34010 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33696 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33698 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33702 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37760 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33716 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37758 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37812 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33720 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37786 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37794 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33022 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40624 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33026 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51832 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51838 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51840 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52770 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52784 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54558 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54570 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54584 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41804 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41808 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41798 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33698 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33702 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41814 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37760 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37758 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51250 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51262 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51276 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56298 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56310 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50936 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50948 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50950 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45620 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41808 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33698 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37760 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41804 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33702 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45644 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45646 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45648 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45628 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36992 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37008 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47336 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47340 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47350 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46442 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46448 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47002 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47012 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47616 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47624 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47638 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47646 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41808 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53794 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33698 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33702 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53812 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53806 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53818 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45644 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53834 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49684 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49692 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53952 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53968 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53290 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53300 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58464 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58478 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58480 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58488 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47638 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58494 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47646 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41808 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54388 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33698 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33702 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54404 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53812 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59502 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59512 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59522 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49904 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49914 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53212 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53218 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53226 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55238 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55242 - "GET /metrics HTTP/1.1" 200 OK
